@@ -10,7 +10,7 @@ const useGetMessages = () => {
     const getMessages = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/messages/${selectedConversation._id}`);
+        const res = await fetch(`/api/messages/${selectedConversation._id}`);
         // if the method id get we don't need to add any options because there is no body
         const data = await res.json();
         if (data.error) throw new Error(data.error);
@@ -22,7 +22,7 @@ const useGetMessages = () => {
       }
     };
     if (selectedConversation._id) getMessages();
-  }, [selectedConversation._id, setMessages]);
+  }, [selectedConversation?._id, setMessages]);
 
   return { messages, loading };
 };
